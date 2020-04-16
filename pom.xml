@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>GPX</groupId>
+  <artifactId>GPX</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>GPX</name>
+  <dependencies>
+	  <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+	<dependency>
+	    <groupId>javax.xml.bind</groupId>
+	    <artifactId>jaxb-api</artifactId>
+	    <version>2.3.0</version>
+	</dependency>
+	<!-- API, java.xml.bind module -->
+<dependency>
+    <groupId>jakarta.xml.bind</groupId>
+    <artifactId>jakarta.xml.bind-api</artifactId>
+    <version>2.3.2</version>
+</dependency>
+
+<!-- Runtime, com.sun.xml.bind module -->
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>2.3.2</version>
+</dependency>
+  </dependencies>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <release>12</release>
+        </configuration>
+      </plugin>
+      <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>jaxb2-maven-plugin</artifactId>
+          <version>2.5.0</version>
+          <executions>
+              <execution>
+                  <id>xjc</id>
+                  <goals>
+                      <goal>xjc</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <!-- The package of your generated sources -->
+              <packageName>org.bsu.gpx</packageName>
+              <sources>
+                  <source>src/xsd</source>
+              </sources>
+          </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
